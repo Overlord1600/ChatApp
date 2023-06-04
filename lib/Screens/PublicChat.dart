@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Widgets/PublicChatListView.dart';
+import '../Widgets/UserInputKeyboard.dart';
 
 class PublicChatScreen extends StatefulWidget {
   const PublicChatScreen({super.key});
@@ -13,7 +14,8 @@ class _PublicChatScreenState extends State<PublicChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(top: 15),
+        padding: const EdgeInsets.only(right: 5, left: 5),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -21,31 +23,14 @@ class _PublicChatScreenState extends State<PublicChatScreen> {
               flex: 8,
               child: Container(
                 margin: const EdgeInsets.only(bottom: 10),
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.black)),
+                // ignore: prefer_const_constructors
                 child: PublicChatListView(),
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: Row(
-                children: [
-                  const Flexible(
-                    flex: 6,
-                    child: TextField(
-                      decoration: InputDecoration(hintText: 'Type a message'),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: FloatingActionButton(
-                      onPressed: (() {}),
-                      child: const Icon(Icons.send),
-                    ),
-                  )
-                ],
-              ),
-            )
+            Container(
+                constraints: const BoxConstraints(maxHeight: 90),
+                padding: const EdgeInsets.all(9),
+                child: const UserKeyboard())
           ],
         ),
       ),
