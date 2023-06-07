@@ -6,9 +6,30 @@ class FetcherMethods extends ChangeNotifier {
   var auth = FirebaseAuth.instance;
   var db = FirebaseFirestore.instance;
 
-  String fetchUserId() {
+  String fetchActiveUserId() {
     String userId = auth.currentUser!.uid;
     return userId;
+  }
+
+  Future<List<Map<String, String>>> fetchAllUserId() async {
+    List<Map<String, String>> allUserIdList = [];
+
+    await db.collection('/Users').get().then((value) {
+      print(value.docs.toList());
+      for (var element in value.docs.toList()) {
+        Map<String, String> userDetails = {
+          'UserId': '',
+          'Username': '',
+          'Email': ''
+        };
+        userDetails['UserId'] = element.id;
+        userDetails['Username'] = element.data()['Username'];
+        userDetails['Email'] = element.data()['Email'];
+        allUserIdList.add(userDetails);
+      }
+    });
+
+    return allUserIdList;
   }
 
   Future<String> fetchUsername(String uid) async {

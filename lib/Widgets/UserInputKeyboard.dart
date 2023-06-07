@@ -26,6 +26,10 @@ class _UserKeyboardState extends State<UserKeyboard> {
           child: Container(
             margin: const EdgeInsets.only(right: 5),
             child: TextField(
+              onTap: () async {
+                await Future.delayed(const Duration(milliseconds: 300));
+                Provider.of<Messages>(context, listen: false).scroll();
+              },
               textCapitalization: TextCapitalization.sentences,
               maxLines: 15,
               minLines: 1,
@@ -70,7 +74,6 @@ class _UserKeyboardState extends State<UserKeyboard> {
                 ? (() {
                     Provider.of<AuthenticationData>(context, listen: false)
                         .fetchUserCreds();
-
                     Map<String, dynamic> data = {
                       'text': textController.text.toString(),
                       'timestamp': Timestamp.now(),
@@ -84,8 +87,6 @@ class _UserKeyboardState extends State<UserKeyboard> {
                     Provider.of<Messages>(context, listen: false)
                         .addNewMessage(data);
                     textController.text = '';
-                    WidgetsBinding.instance.addPostFrameCallback((_) =>
-                        Provider.of<Messages>(context, listen: false).scroll());
                   })
                 : null,
             child: emptyKeyboard == false

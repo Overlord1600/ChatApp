@@ -11,22 +11,18 @@ class NoChatsPlaceholder extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            child: const Text(
-              'No Chats Added Yet.Starting Chatting now!',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
-            ),
+          const Text(
+            'No Chats Added Yet.Starting Chatting now!',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
           ),
-          Container(
-            child: ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-                  backgroundColor: MaterialStateProperty.all(Colors.black)),
-              onPressed: () {},
-              child: const Text('Add Chats'),
-            ),
-          )
+          ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20))),
+                backgroundColor: MaterialStateProperty.all(Colors.black)),
+            onPressed: () {},
+            child: const Text('Add Chats'),
+          ),
         ],
       ),
     );

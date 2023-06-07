@@ -3,7 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Messages extends ChangeNotifier {
   ScrollController controller = ScrollController();
-  void scroll() {
+  Future<void> scroll() async {
+    await Future.delayed(Duration.zero);
     controller.jumpTo(controller.position.maxScrollExtent);
   }
 

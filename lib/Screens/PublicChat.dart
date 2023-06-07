@@ -19,13 +19,10 @@ class _PublicChatScreenState extends State<PublicChatScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Flexible(
-              flex: 8,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                // ignore: prefer_const_constructors
-                child: PublicChatListView(),
-              ),
+            Expanded(
+              child:
+                  // ignore: prefer_const_constructors
+                  PublicChatListView('/Chats/fRJOxxrtF87geoCskILf/Messages'),
             ),
             Container(
                 constraints: const BoxConstraints(maxHeight: 90),

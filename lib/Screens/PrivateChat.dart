@@ -27,14 +27,7 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 25),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade300,
-                    blurRadius: 5,
-                    offset: const Offset(4, 7), // Shadow position
-                  ),
-                ]),
+              SizedBox(
                 height: 43,
                 child: TextField(
                     keyboardType: TextInputType.none,
@@ -49,13 +42,13 @@ class _PrivateChatScreenState extends State<PrivateChatScreen> {
                       hintText: 'Tap to enter Search',
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Colors.grey.shade100)),
+                          borderSide: BorderSide(color: Colors.grey.shade300)),
                       disabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Colors.grey.shade100)),
+                          borderSide: BorderSide(color: Colors.grey.shade300)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(color: Colors.grey.shade100)),
+                          borderSide: BorderSide(color: Colors.grey.shade300)),
                     )),
               ),
               Container(

@@ -9,9 +9,20 @@ class CreateMethods extends ChangeNotifier {
     await db.collection('Chats/fRJOxxrtF87geoCskILf/Messages').add(data);
   }
 
-  Future<void> addNewChat(String uid1, String uid2) async {
-    String finalChatUid = uid1 + uid2;
-    db.collection('/Users/$uid1/userPrivateChatList').doc(finalChatUid);
-    db.collection('/Users/$uid2/userPrivateChatList').doc(finalChatUid);
+  Future<Map> addNewChat(String uid1, String uid2) async {
+    String finalChatUid = '$uid1%$uid2';
+    Map newAddedChatData = {
+      'docId': '',
+    };
+    await db
+        .collection('/Users/$uid1/userPrivateChatList')
+        .doc(finalChatUid)
+        .set({'User1UID': uid1, 'User2UID': uid2});
+    await db
+        .collection('/Users/$uid2/userPrivateChatList')
+        .doc(finalChatUid)
+        .set({'User1UID': uid2, 'User2UID': uid1});
+    newAddedChatData['docId'] = finalChatUid;
+    return newAddedChatData;
   }
 }
